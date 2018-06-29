@@ -1,0 +1,16 @@
+---
+- name: This will install vim and tree
+  hosts: all
+  tasks:
+    - name: this will install vim
+      apt: name=vim state=latest update_cache=yes
+    - name: Install tree utility
+      apt: name=tree state=latest update_cache=yes
+
+- name: this si second play
+  hosts: server1
+  tasks:
+    - name: This task belong to second play
+      debug: msg="Second play - First task"
+
+...

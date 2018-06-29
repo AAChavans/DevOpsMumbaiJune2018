@@ -1,0 +1,7 @@
+---
+- name: Installs, COnfigures and Deploys web page in nginx web serve
+  hosts: all
+  tasks:
+   - name: Install nginx web server
+     apt: name=nginx state=latest update_cache=yes
+...

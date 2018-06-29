@@ -1,0 +1,21 @@
+---
+- name: Installs, configures and Deploys web page in nginx web server
+  hosts: all
+  vars_files:
+    - custom_variables 
+    
+  tasks: 
+    - include: installnginx.yml
+    - include: configure.yml
+    - include: configurewebroot.yml
+
+    
+    - name: Create the web root folder
+     # shell: mkdir -p /var/html
+      file: path=/var/html state=directory mode=777
+
+    - name: deploy our custom html page in nginx web server
+      template: src=index.html.j2 dest=/var/html/index.html
+  handlers:
+    - name: Restart nginx web server
+      service: name=nginx state=restarted

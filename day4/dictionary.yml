@@ -1,0 +1,14 @@
+- name: demostrates dictionary variable
+  hosts: localhost
+  vars:
+    - contacts:
+        sriram: 
+           name: Amit
+           mobile: 12345
+        Jesulin:
+           name: Anil
+           mobile: 12345   
+  tasks:
+   - name: print all contacts
+     debug: msg="Mobile number of {{item.key}} is {{item.value.mobile}}."
+     with_dict: "{{contacts}}"

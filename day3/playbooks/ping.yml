@@ -1,0 +1,7 @@
+---
+- name: This Play will tell us ping module
+  hosts: all
+  tasks:
+    - name: ping the remote machine
+      ping:  
+...
